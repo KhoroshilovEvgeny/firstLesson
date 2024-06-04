@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println(Utils.fraction(5.25));
@@ -118,5 +120,132 @@ public class Main {
         Utils.printDays("четверг");
         System.out.println("тест для выводя дней недели начиная с чг и до конца недели");
         Utils.printDays("чг");
+
+        // 4.1 Числа подряд
+        System.out.println("\nПечать чисел от 0 до Х");
+        System.out.println(Utils.listNums(5));
+        System.out.println(Utils.listNums(7));
+
+        // 4.2 Числа наоборот
+        System.out.println("\nПечать чисел от Х до 0 в обратном порядке");
+        System.out.println(Utils.reverseListNums(5));
+        System.out.println(Utils.reverseListNums(7));
+
+        // 4.3 Четные числа
+        System.out.println("\nПечать четных чисел от 0 до Х включительно");
+        System.out.println(Utils.chet(5));
+        System.out.println(Utils.chet(8));
+
+
+        // 4.4 Степень числа
+        System.out.println("\nПроверка функции возведения числа в степень");
+        System.out.println("2 в степени 5 равно " + Utils.pow(2, 5));
+        System.out.println("3 в степени 0 равно " + Utils.pow(3, 0));
+        System.out.println("3 в степени 3 равно " + Utils.pow(3, 3));
+
+        // 4.5 Длина числа
+        System.out.println("Проверка длины числа, т.е. количества цифр в числе");
+        System.out.println("число 0 содержит " + Utils.numLen(0) + " цифр");
+        System.out.println("число 5 содержит " + Utils.numLen(5) + " цифр");
+        System.out.println("число 100 содержит " + Utils.numLen(100) + " цифр");
+        System.out.println("число 12567 содержит " + Utils.numLen(12567) + " цифр");
+
+        // 4.6 Одинаковость
+        System.out.println("\nПроверяем все ли цифры в числе одинаковые");
+        System.out.println("число 1 - " + Utils.equalNum(1));
+        System.out.println("число 0 - " + Utils.equalNum(0));
+        System.out.println("число -1 - " + Utils.equalNum(-1));
+        System.out.println("число 33 - " + Utils.equalNum(33));
+        System.out.println("число 32 - " + Utils.equalNum(32));
+        System.out.println("число 222 - " + Utils.equalNum(222));
+        System.out.println("число -222 - " + Utils.equalNum(-222));
+        System.out.println("число 122 - " + Utils.equalNum(122));
+        System.out.println("число -122 - " + Utils.equalNum(-122));
+        System.out.println("число 1111 - " + Utils.equalNum(1111));
+        System.out.println("число 1211 - " + Utils.equalNum(1211));
+
+        // 4.7 Квадрат
+        System.out.println("\n Печатаем квадрат 2х2");
+        Utils.square(2);
+        System.out.println("\n Печатаем квадрат 4х4");
+        Utils.square(4);
+
+        // 4.8 Левый треугольник
+        System.out.println("\n Печатаем левый треугольник размером 2х2");
+        Utils.leftTriangle(2);
+        System.out.println("\n Печатаем левый треугольник размером 4х4");
+        Utils.leftTriangle(4);
+
+        // 4.9 Правый треугольник
+        System.out.println("\n Печатаем правый треугольник размером 1х1");
+        Utils.rightTriangle(1);
+        System.out.println("\n Печатаем правый треугольник размером 3х3");
+        Utils.rightTriangle(3);
+        System.out.println("\n Печатаем правый треугольник размером 4х4");
+        Utils.rightTriangle(4);
+
+        // 4.10 Угадайка
+        //Utils.guessGame();
+
+        // 5.1 Поиск первого значения
+        System.out.println("\nиндекс первого вхождения: " + Utils.findFirst(new int[]{1, 2, 3, 4, 2, 2, 5}, 2));
+        System.out.println("индекс первого вхождения: " + Utils.findFirst(new int[]{1, 2, 3, 4, 2, 2, 5}, 5));
+        System.out.println("индекс первого вхождения: " + Utils.findFirst(new int[]{1, 2, 3, 4, 2, 2, 5}, 7));
+
+        // 5.2 Поиск последнего значения
+        System.out.println("\nиндекс последнего вхождения: " + Utils.findLast(new int[]{1, 2, 3, 4, 2, 2, 5}, 2));
+        System.out.println("индекс последнего вхождения: " + Utils.findLast(new int[]{1, 2, 3, 4, 2, 2, 5}, 1));
+        System.out.println("индекс последнего вхождения: " + Utils.findLast(new int[]{1, 2, 3, 4, 2, 2, 5}, 7));
+
+        // 5.3 Поиск максимального
+        System.out.println("\nМаксимальное значение по модулю: " + Utils.maxAbs(new int[]{1, -2, -7, 4, 2, 2, 5}));
+        System.out.println("Максимальное значение по модулю: " + Utils.maxAbs(new int[]{5}));
+        System.out.println("Максимальное значение по модулю: " + Utils.maxAbs(new int[]{-7, -7}));
+
+        // 5.4 Подсчет позитива
+        System.out.println("\nПодсчет количества положительных элементов массива: " +
+                Utils.countPositive(new int[]{1, -2, -7, 4, 2, 2, 5}));
+
+        // 5.5 Палиндром
+        System.out.println("\nМассив [1,-2,-7,4,2,2,5] полиндром ли ? Ответ : " +
+                Utils.palindrom(new int[]{1, -2, -7, 4, 2, 2, 5}));
+        System.out.println("Массив [1,-2,-7,4,-7,-2,1] полиндром ли ? Ответ : " +
+                Utils.palindrom(new int[]{1, -2, -7, 4, -7, -2, 1}));
+
+        // 5.6 Реверс
+        System.out.println("\n\nРеверс массива");
+        Utils.reverse(new int[]{});
+        Utils.reverse(new int[]{1});
+        Utils.reverse(new int[]{1, 2, 3, 4, 5});
+        Utils.reverse(new int[]{1, 2, 3, 4, 5, 6});
+
+        // 5.7 Возвратный реверс
+        System.out.println("\n\nВозвратный реверс массима:");
+        System.out.println(Arrays.toString(Utils.reverseBack(new int[]{1, 2, 3, 4, 5})));
+        System.out.println(Arrays.toString(Utils.reverseBack(new int[]{1, 2, 3, 4, 5, 6})));
+        System.out.println(Arrays.toString(Utils.reverseBack(new int[]{7})));
+        System.out.println(Arrays.toString(Utils.reverseBack(new int[]{})));
+
+        // 5.8 Объединение
+        System.out.println("\n\nОбъединение двух массивов");
+        System.out.println(Arrays.toString(Utils.concat(new int[]{1, 2, 3}, new int[]{7, 8, 9})));
+
+        // 5.9 Все вхождения
+        System.out.println("\n\nИндексы всех вхождений числа в массив:");
+        System.out.println(Arrays.toString(Utils.findAll(new int[]{1, 2, 3, 8, 2, 2, 9}, 2)));
+
+        //5.10 Удалить негатив
+        System.out.println("\n\nИз массива удалить негативные элементы:");
+        System.out.println(Arrays.toString(Utils.deleteNegative(new int[]{1, 2, -3, 4, -2, 2, -5})));
+
+        //5.11 Добавление в массив
+        System.out.println("\n\nДобавление элемента в массив:");
+        System.out.println(Arrays.toString(Utils.add(new int[]{1, 2, 3, 4, 5}, 9, 3)));
+
+        // 5.12 Добавление массива в массив
+        System.out.println("\n\nДобавление массива в массив:");
+        System.out.println(Arrays.toString(Utils.add(new int[]{1, 2, 3, 4, 5}, new int[]{7, 8, 9}, 0)));
+        System.out.println(Arrays.toString(Utils.add(new int[]{1, 2, 3, 4, 5}, new int[]{7, 8, 9}, 3)));
+        System.out.println(Arrays.toString(Utils.add(new int[]{1, 2, 3, 4, 5}, new int[]{7, 8, 9}, 5)));
     }
 }

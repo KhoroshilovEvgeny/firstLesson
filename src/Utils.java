@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Utils {
 
     // 2.1 Дробная часть
@@ -27,7 +29,7 @@ public class Utils {
 
     // 2.6 Большая буква
     public static boolean isUpperCase(char x) {
-        return x > 64 && x < 91;
+        return x >= 'A' && x <= 'Z';
     }
 
     // 2.7 Диапазон
@@ -192,5 +194,272 @@ public class Utils {
             default:
                 System.out.println("это не день недели");
         }
+    }
+
+    // 4.1 Числа подряд
+    public static String listNums(int x) {
+        String result = "";
+        for (int i = 0; i <= x; i++) {
+            result += i + " ";
+        }
+        return result.trim();
+    }
+
+    // 4.2 Числа наоборот
+    public static String reverseListNums(int x) {
+        String result = "";
+        for (int i = x; i >= 0; i--) {
+            result += i + " ";
+        }
+        return result.trim();
+    }
+
+    // 4.3 Четные числа
+    public static String chet(int x) {
+        String result = "";
+        for (int i = 0; i <= x; i += 2) {
+            result += i + " ";
+        }
+        return result.trim();
+    }
+
+    // 4.4 Степень числа
+    public static int pow(int x, int y) {
+        int result = 1;
+        for (int i = 0; i < y; i++) {
+            result *= x;
+        }
+        return result;
+    }
+
+    // 4.5 Длина числа
+    public static int numLen(long x) {
+        int result = 0;
+        do {
+            x /= 10;
+            result++;
+        } while (x != 0);
+        return result;
+    }
+
+    // 4.6 Одинаковость
+    public static boolean equalNum(int x) {
+        int prev, next;
+        if (x / 10 == 0) {
+            return true;
+        }
+        prev = x % 10;
+        x /= 10;
+        do {
+            next = x % 10;
+            if (prev != next) {
+                return false;
+            }
+            x /= 10;
+            prev = next;
+        } while (x != 0);
+        return true;
+    }
+
+    // 4.7 Квадрат
+    public static void square(int x) {
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < x; j++) {
+                System.out.print("x");
+            }
+            System.out.println();
+        }
+    }
+
+    // 4.8 Левый треугольник
+    public static void leftTriangle(int x) {
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print("x");
+            }
+            System.out.println();
+        }
+    }
+
+    // 4.9 Правый треугольник
+    public static void rightTriangle(int x) {
+        for (int i = 1; i <= x; i++) {
+            System.out.println(" ".repeat(x - i) + "*".repeat(i));
+        }
+    }
+
+    // 4.10 Угадайка
+    public static void guessGame() {
+        int x, randomNum = 3, attempt = 0;
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.println("What number am I thinking (0 to 9)? :");
+        do {
+            attempt++;
+            x = sc.nextInt();
+            if (x != randomNum) {
+                System.out.println("No, try again");
+            } else {
+                System.out.println("Yes, it`s " + randomNum);
+            }
+        } while (x != randomNum);
+        System.out.println("Количество использованных попыток: " + attempt);
+    }
+
+    // 5.1 Поиск первого значения
+    public static int findFirst(int[] arr, int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+    // 5.2 Поиск последнего значения
+    public static int findLast(int[] arr, int x) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == x) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // 5.3 Поиск максимального
+    public static int maxAbs(int[] arr) {
+        if (arr.length == 1) {
+            return arr[0];
+        }
+        int maxValue = arr[0];
+        int maxAbsValue = Math.abs(arr[0]);
+        for (int i = 1; i < arr.length; i++) {
+            if (Math.abs(arr[i]) > maxAbsValue) {
+                maxValue = arr[i];
+                maxAbsValue = Math.abs(arr[i]);
+            }
+        }
+        return maxValue;
+    }
+
+    // 5.4 Подсчет позитива
+    public static int countPositive(int[] arr) {
+        int countValue = 0;
+        for (int elem : arr) {
+            if (elem > 0) {
+                countValue++;
+            }
+        }
+        return countValue;
+    }
+
+
+    // 5.5 Палиндром
+    public static boolean palindrom(int[] arr) {
+        if (arr.length == 1) {
+            return true;
+        }
+        for (int i = 0; i < arr.length / 2; i++) {
+            if (arr[i] != arr[arr.length - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 5.6 Реверс
+    public static void reverse(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length / 2; i++) {
+            temp = arr[i];
+            arr[i] = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = temp;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    // 5.7 Возвратный реверс
+    public static int[] reverseBack(int[] arr) {
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result[arr.length - 1 - i] = arr[i];
+        }
+        return result;
+    }
+
+    // 5.8 Объединение
+    public static int[] concat(int[] arr1, int[] arr2) {
+        int[] result = new int[arr1.length + arr2.length];
+        for (int i = 0; i < arr1.length; i++) {
+            result[i] = arr1[i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            result[i + arr1.length] = arr2[i];
+        }
+        return result;
+    }
+
+    // 5.9 Все вхождения
+    public static int[] findAll(int[] arr, int x) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                count++;
+            }
+        }
+        int[] result = new int[count];
+        int j = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                result[j++] = i;
+            }
+        }
+        return result;
+    }
+
+    //5.10 Удалить негатив
+    public static int[] deleteNegative(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= 0) {
+                count++;
+            }
+        }
+        int[] result = new int[count];
+        int j = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= 0) {
+                result[j++] = arr[i];
+            }
+        }
+        return result;
+    }
+
+    //5.11 Добавление в массив
+    public static int[] add(int[] arr, int x, int pos) {
+        int[] result = new int[arr.length + 1];
+        for (int i = 0; i < pos; i++) {
+            result[i] = arr[i];
+        }
+        result[pos] = x;
+        for (int i = pos + 1; i < arr.length + 1; i++) {
+            result[i] = arr[i - 1];
+        }
+        return result;
+    }
+
+    // 5.12 Добавление массива в массив
+    public static int[] add(int[] arr, int[] ins, int pos) {
+        int[] result = new int[arr.length + ins.length];
+        for (int i = 0; i < pos; i++) {
+            result[i] = arr[i];
+        }
+        for (int i = pos; i < pos + ins.length; i++) {
+            result[i] = ins[i - pos];
+        }
+        for (int i = pos + ins.length; i < arr.length + ins.length; i++) {
+            result[i] = arr[i - ins.length];
+        }
+        return result;
     }
 }
